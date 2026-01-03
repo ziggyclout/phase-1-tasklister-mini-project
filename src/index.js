@@ -1,22 +1,18 @@
-function initializeTaskForm() {
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('create-task-form');
   const taskList = document.getElementById('tasks');
 
-  form.addEventListener('submit', function (event) {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const input = document.getElementById('new-task-description');
-    const li = document.createElement('li');
-    li.textContent = input.value;
+    const taskText = input.value.trim();
 
-    taskList.appendChild(li);
-    form.reset();
+    if (taskText !== '') {
+      const li = document.createElement('li');
+      li.textContent = taskText;
+      taskList.appendChild(li);
+      form.reset();
+    }
   });
-}
-
-// Works in BOTH jsdom and browser
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeTaskForm);
-} else {
-  initializeTaskForm();
-}
+});
