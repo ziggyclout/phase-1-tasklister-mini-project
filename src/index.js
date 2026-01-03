@@ -1,20 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#create-task-form');
   const taskList = document.querySelector('#tasks');
-  const formInput = document.querySelector('#new-task-description');
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault(); // stop page refresh
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent page reload
 
-    const task = formInput.value.trim();
-    if (task !== "") {
-      const li = document.createElement('li');
-      li.textContent = task;
+    const input = document.querySelector('#new-task-description');
+    const taskText = input.value;
 
-      // append directly to the ul
-      taskList.appendChild(li);
+    if (taskText.trim() !== "") {
+      const li = document.createElement('li'); // create a new list item
+      li.textContent = taskText;               // set its text
+      taskList.appendChild(li);                // append it to the task list
 
-      formInput.value = ''; // clear input
+      input.value = ''; // clear the input field
     }
   });
 });
