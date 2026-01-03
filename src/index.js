@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const task =
-      event.target.elements['new-task-description'].value;
+    const taskInput = document.getElementById('new-task-description').value;
 
-    buildToDo(task);
+    buildToDo(taskInput);
     form.reset();
   });
 });
