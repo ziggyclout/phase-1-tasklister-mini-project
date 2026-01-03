@@ -4,17 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const taskInput = document.getElementById('new-task-description').value;
-    buildToDo(taskInput);
+    const input = document.getElementById('new-task-description');
+    const taskText = input.value;
 
-    form.reset();
+    buildToDo(taskText);
+
+    input.value = '';
   });
 });
 
-function buildToDo(task) {
-  const li = document.createElement('li');
-  li.textContent = task;
-
+function buildToDo(taskText) {
   const taskList = document.getElementById('tasks');
+  const li = document.createElement('li');
+  li.textContent = taskText;
   taskList.appendChild(li);
 }
